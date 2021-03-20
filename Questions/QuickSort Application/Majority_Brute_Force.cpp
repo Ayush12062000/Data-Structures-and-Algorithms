@@ -43,14 +43,19 @@ int main() {
 	ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+
     input(n);
     int arr[n];
     scan(arr,n);
     Majority(arr,n);
-    
+
 	return 0;
 }
+
+
+/*
+
+7
+2 2 1 1 1 2 1
+Majority element = 1
+*/
