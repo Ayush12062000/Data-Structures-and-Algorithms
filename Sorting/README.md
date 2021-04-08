@@ -6,3 +6,4 @@
 4. Merge sort
 5. Quick sort
 6. Randomized Quick sort
+7. Heap Sort
