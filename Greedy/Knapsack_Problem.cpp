@@ -20,7 +20,7 @@ int main()
         cout<<arr[0][i]<<" "<<arr[1][i]<<endl;*/
 
     int curw = w,maxi;
-    double profit = 0;
+    double profit = 0.0;
     while(curw>=0)
     {
         maxi=-1;
