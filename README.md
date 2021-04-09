@@ -8,5 +8,6 @@
 	4. Merge sort
 	5. Quick sort
 	6. Randomized Quick sort
+	7. Heap Sort
 3. Greedy Method
 4. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
