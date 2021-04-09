@@ -8,4 +8,5 @@
 	4. Merge sort
 	5. Quick sort
 	6. Randomized Quick sort
-3. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
+3. Greedy Method
+4. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
