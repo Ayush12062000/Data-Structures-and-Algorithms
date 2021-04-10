@@ -10,4 +10,5 @@
 	6. Randomized Quick sort
 	7. Heap Sort
 3. Greedy Method
-4. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
+4. Graphs
+5. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
