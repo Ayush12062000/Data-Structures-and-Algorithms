@@ -17,7 +17,7 @@ bool is_bipartite(int src,int v,vector<vector<int>> &g,vector<int> &color)
             {
                 if(color[i] == -1)
                 {
-                    color[i] = color[src] ^ 1;
+                    color[i] = 1;
                     q.push(i);
                 }
                 else if(color[i] == color[src] || i == src)
