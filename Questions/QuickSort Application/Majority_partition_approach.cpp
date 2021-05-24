@@ -1,9 +1,4 @@
-#include <iostream>
-#include<climits>
-#include<ctime>
 #include <bits/stdc++.h>
-#include<stdlib.h> /* srand, rand */
-#include<time.h>
 typedef long long int ll;
 #define deb(x) cout<<#x<<": "<<x<<"\n"
 #define scan(arr, n)  for(int i=0;i<n;i++) cin>>arr[i];
@@ -12,9 +7,6 @@ typedef long long int ll;
 #define print(any)  for(auto i:any)  cout << i<<" "<<" ";
 #define sz(x) (int)x.size();
 using namespace std;
-
-const int N = int(1e5+3);
-#define modulo 1000000007
 
 int partition(int *arr,int l, int r)
 {
