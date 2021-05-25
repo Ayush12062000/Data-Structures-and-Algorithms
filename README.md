@@ -9,6 +9,8 @@
 	5. Quick sort
 	6. Randomized Quick sort
 	7. Heap Sort
+	8. Topological Sort
 3. Greedy Method
-4. Graphs
-5. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
+4. DP
+5. Graphs
+6. Different Problem Solutions (LeetCode, HackerRank, CodeForces, CodeChef)
