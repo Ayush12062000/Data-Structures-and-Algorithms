@@ -55,6 +55,7 @@ int main()
 
 
 /*
+Output:
 enter number of vertices: 
 6
 enter number of edges: 
