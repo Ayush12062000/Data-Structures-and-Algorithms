@@ -2,38 +2,44 @@
 #define input(n) int n; cin>>n
 using namespace std;
 
-void path_check(vector<vector<int>> &g,vector<int> &visited,int src,int des)
+void path_check(vector<int> g[],int *visited,int src,int des)
 {
     visited[src]=1;
     if(src == des)
         return;
     for(int i=0;i<g[src].size();i++)
     {
-        if(g[src][i]==1 && visited[i]==0)
-            path_check(g,visited,i,des);
+        if(!visited[g[src][i]])
+            path_check(g,visited,g[src][i],des);
     }
 }
 
 int main()
 {
-    //cout<<"Enter number of vertices: ";
+    cout<<"Enter number of vertices: ";
     input(v);
-    vector<vector<int>> g(v,vector<int>(v,0));
-    vector<int> visited(v,0);
-    //cout<<"Enter the matrix:\n";
+    cout<<"Enter number of edges: ";
+    input(e);
+    vector<int> g[v];
+    int visited[v];
     for(int i=0;i<v;i++)
-        for(int j=0;j<v;j++)
-            cin>>g[i][j];
+        visited[i] = 0;
 
-    int src,des;
-    //cout<<"Enter 2 vertices to know if path exist or not: ";
-    cin>>src>>des;
-    path_check(g,visited,src-1,des-1);
-
-    if(visited[des-1])
+    cout<<"Directed Graph: ";
+    for(int i=0;i<e;i++)
     {
-        cout<<"Yes Path Exists\n";
+        input(s);
+        input(d);
+        g[s].push_back(d);
     }
+
+    cout<<"Enter 2 vertices to know if path exist or not: ";
+    input(src);
+    input(des);
+    path_check(g,visited,src,des);
+
+    if(visited[des] == 1)
+        cout<<"Yes Path Exists\n";
     else
         cout<<"No Such Path Exists\n";
     return 0;
@@ -42,21 +48,36 @@ int main()
 
 /*
 Test case #1:
+Enter number of vertices: 6
+Enter number of edges: 10
+Directed Graph: 0 1
+1 3
+3 5
+4 5
+4 2
+2 0
+1 2
+2 3
+4 1
+3 4
+Enter 2 vertices to know if path exist or not: 1
 5
-0 1 1 0 0
-1 0 1 1 1
-1 1 0 1 0
-0 1 1 0 1
-0 1 0 1 0
-1 5
 Yes Path Exists
 
 Test case #2:
-5
-0 1 1 0 0
-1 0 1 1 1
-1 1 0 1 0
-0 1 1 0 1
-0 1 0 1 0
-2 4
-Yes Path Exists*/
+Enter number of vertices: 6
+Enter number of edges: 10
+Directed Graph: 0 1
+1 3
+3 5
+4 5
+4 2
+2 0
+1 2
+2 3
+4 1
+3 4
+Enter 2 vertices to know if path exist or not: 5
+0
+No Such Path Exists
+*/
