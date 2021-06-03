@@ -2,9 +2,21 @@
 #define input(n) int n; cin>>n
 using namespace std;
 
-void dfs(vector<int> g[],int i,int v,int visited[])
+void dfs(vector<int> g[],int u,int &flag,int visited[])
 {
-
+    if(visited[u] == -1)
+    {
+        flag = 1;
+        return ;
+    }
+    visited[u]=-1;
+    int n = g[u].size();
+    for(int i=0;i<n;i++)
+    {
+        if(!visited[g[u][i]])
+            dfs(g,g[u][i],flag,visited);
+    }
+    visited[u]=1;
 }
 
 
@@ -31,7 +43,7 @@ int main()
     for(int i=0;i<v;i++)
     {
         if(!visited[i])
-            dfs(g,i,v,visited);
+            dfs(g,i,flag,visited);
         if(flag==1)
             break;
     }
@@ -45,11 +57,15 @@ int main()
 
 /*
 Test case #1:
-5
-0 1 1 0 0
-0 0 0 1 1
-0 1 0 1 0
-0 0 0 0 1
-0 0 0 0 0
-No Cycle Exists
+Enter vertices: 5
+Enter Edges: 5
+0 1
+1 2
+2 3
+3 2
+4 1
+No Cycle exist
+
+Test case #2:
+
 */
