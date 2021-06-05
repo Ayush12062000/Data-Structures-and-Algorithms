@@ -1,51 +1,52 @@
-#include<iostream>
+#include <iostream>
 #include <cmath>
+#include <vector>
 
 #define input(n) int n; cin>>n;
 #define scan(arr,n) for(int i=0;i<n;i++) cin>>arr[i];
 
 using namespace std;
 
-int* sqrtdecomp(int *arr,int n)
+vector<int> sqrtdecomp(int *arr,int n)
 {
     int block_size = ceil(sqrt(n));
-    int *block = new int[block_size]; // by default initialized to 0
+    vector<int> block(block_size,1); // by default initialized to 0
 
     for(int i=0;i<n;i++)
     {
-        block[i/block_size] += arr[i]; 
+        block[i/block_size] *= arr[i]; 
     }
     return block;
 }
 
-void update(int *arr,int *block,int n, int index, int key)
+void update(int *arr,vector<int> &block,int n, int index, int key)
 {
-    int value = key - arr[index];
+    double value = (key/1.0* arr[index]);
     arr[index] = key;
     int block_size = ceil(sqrt(n));
-    block[index/block_size] += value; 
+    block[index/block_size] *= value; 
 }
 
-int calsum(int *arr,int *block,int n, int l, int r)
+int calprod(int *arr,vector<int> &block,int n, int l, int r)
 {
     int block_size = ceil(sqrt(n));
-    int sum = 0;
+    int prod = 1;
     int start = l/block_size , end = r/block_size ;
 
     for(int i=start+1;i<end;i++)
-        sum += block[i] ;
+        prod *= block[i] ;
     int i = l;
     while((i/block_size) == start)
     {
-        sum += arr[i++];
+        prod *= arr[i++];
     }
 
     i = r;
     while((i/block_size) == end)
     {
-        sum += arr[i--];
+        prod *= arr[i--];
     }
-    return sum;
+    return prod;
 }
 
 int main()
@@ -56,9 +57,9 @@ int main()
     cout<<"Array: ";
     for(int i=0;i<n;i++)
         cout<<arr[i]<<" ";
-    int *block = sqrtdecomp(arr,n);
+    vector<int> block = sqrtdecomp(arr,n);
     int block_size = ceil(sqrt(n));
-    cout<<"Block: ";
+    cout<<"\nBlock: ";
     for(int i=0;i<block_size;i++)
         cout<<block[i]<<" ";
     input(q);
@@ -73,7 +74,7 @@ int main()
                 break;
             case 2: input(l);
                     input(r);
-                    cout<<"Sum = "<<calsum(arr,block,n,l,r)<<"\n";
+                    cout<<"Product = "<<calprod(arr,block,n,l,r)<<"\n";
                 break;
         }
     }
