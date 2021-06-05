@@ -21,10 +21,13 @@ vector<int> sqrtdecomp(int *arr,int n)
 
 void update(int *arr,vector<int> &block,int n, int index, int key)
 {
-    double value = (key/1.0* arr[index]);
+    double value = (1.0*key/arr[index]);
     arr[index] = key;
     int block_size = ceil(sqrt(n));
     block[index/block_size] *= value; 
+    cout<<"\nBlock: ";
+    for(int i=0;i<block_size;i++)
+        cout<<block[i]<<" ";
 }
 
 int calprod(int *arr,vector<int> &block,int n, int l, int r)
@@ -85,13 +88,17 @@ int main()
 /*
 OutPut:
 
-10 
-9 10 3 1 8 7 2 6 4 3
-Array: 9 10 3 1 8 7 2 6 4 3 Block: 23 23 7 0 
+8
+5 1 4 6 2 9 4 3
+Array: 5 1 4 6 2 9 4 3 
+Block: 20 108 12
 3
-2 0 9
-Sum = 53
-1 2 10
-2 0 9
-Sum = 60
+1 3 10
+
+Block: 20 180 12
+2 0 7
+Product = 43200
+2 2 6
+Product = 2880
+
 */
