@@ -3,65 +3,61 @@
 
 using namespace std;
 
-struct job
+bool compare(pair<int,int> a,pair<int,int> b)
 {
-    char id;
-    int dl;
-    int profit; 
-};
-
-bool comparison(job a,job b)
-{
-    return (a.profit > b.profit);
+    return a.first>b.first;
 }
 
 int main()
 {
-    cout<<"input number of jobs: ";
     input(n);
-    job arr[n];
-    cout<<"enter id deadline profit:\n";
+    vector<pair<int,int>> v;
     for(int i=0;i<n;i++)
     {
-        cin>>arr[i].id>>arr[i].dl>>arr[i].profit;
+        input(profit);
+        input(deadline);
+        v.push_back(make_pair(profit,deadline));
     }
-    sort(arr,arr+n,comparison);
-    //cout<<"Entered Profit(0) and deadline(1):\n";
-    //for(int i=0;i<n;i++)
-        //cout<<arr[i].id<<" "<<arr[i].dl<<" "<<arr[i].profit<<endl;
+    sort(v.begin(),v.end(),compare);
+    int maxsize=0;
+    for(int i=0;i<n;i++)
+    {
+        if(v[i].second > maxsize)
+            maxsize = v[i].second;
+    }
+    int fill[maxsize];
+    for(int i=0;i<maxsize;i++)
+        fill[i] = -1;
 
-    int result[n];
-    vector<bool> slot(n,false);
-
+    int count=0,maxprofit=0;
 
     for(int i=0;i<n;i++)
     {
-        for(int j=min(n,arr[i].dl)-1;j>=0;j--)
+        int j = v[i].second-1;
+        while(j>=0 && fill[j] != -1 )
+            j--;
+
+        if(j>=0 && fill[j] == -1)
         {
-            if(slot[j]==false)
-            {
-                result[j] = i;
-                slot[j] = true;
-                break;
-            }
+            fill[j] = i;
+            count++;
+            maxprofit += v[i].first;
         }
     }
-    cout << "Maximum profit sequence of jobs : ";
-    for (int i=0; i<n; i++)
-        if (slot[i])
-            cout << arr[result[i]].id << " ";
+
+    cout<<count<<" jobs aggregate "<<maxprofit<<" profit"<<endl;
+
     return 0;
 }
 
 
 /*
-test case #1:
-input number of jobs: 5
-enter id deadline profit:
-a 2 100
-b 1 19
-c 2 27
-d 1 25
-e 3 15
-Maximum profit sequence of jobs : c a e
+
+5
+20 2
+15 2
+10 1
+5 3
+1 3
+3 jobs aggregate 40 profit
 */
