@@ -3,6 +3,47 @@
 
 using namespace std;
 
+bool compare(pair<int,int> a,pair<int,int> b)
+{
+    return (a.first / a.second) >(b.first / b.second);
+}
+
+int main()
+{
+    vector<pair<int,int>> v;
+    input(n);
+    input(w);
+    for(int i=0;i<n;i++)
+    {
+        input(profit);
+        input(weight);
+        v.push_back(make_pair(profit,weight));
+    }
+    sort(v.begin(),v.end(),compare);
+
+    cout<<"You Entered:\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<v[i].first<<" "<<v[i].second<<endl;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 int main()
 {
     cout<<"input number of objects: ";
@@ -15,9 +56,9 @@ int main()
     {
         cin>>arr[0][i]>>arr[1][i];
     }
-    /*cout<<"Entered Profit(0) and weights(1):\n";
+    cout<<"Entered Profit(0) and weights(1):\n";
     for(int i=0;i<n;i++)
-        cout<<arr[0][i]<<" "<<arr[1][i]<<endl;*/
+        cout<<arr[0][i]<<" "<<arr[1][i]<<endl;
 
     int curw = w,maxi;
     double profit = 0.0;
@@ -46,7 +87,7 @@ int main()
 
     return 0;
 }
-
+*/
 
 /*
 input number of objects: 3
