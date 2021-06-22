@@ -11,8 +11,11 @@ bool compare(pair<int,int> a,pair<int,int> b)
 int main()
 {
     vector<pair<int,int>> v;
+    cout<<"Enter n:";
     input(n);
+    cout<<"Enter Max weight of sack w:";
     input(w);
+    cout<<"Enter profit and weight:\n";
     for(int i=0;i<n;i++)
     {
         input(profit);
@@ -21,15 +24,71 @@ int main()
     }
     sort(v.begin(),v.end(),compare);
 
-    cout<<"You Entered:\n";
+    /*cout<<"You Entered:\n";
     for(int i=0;i<n;i++)
     {
         cout<<v[i].first<<" "<<v[i].second<<endl;
+    }*/
+
+    double mprofit=0.0;
+    int curw= w,maxi=0;
+    int added[n]={0};
+    /*cout<<"added\n";
+    for(int i=0;i<n;i++)
+        cout<<added[i]<<" ";*/
+    while(curw>=0)
+    {
+        for(int i=maxi;i<n;i++)
+        {
+            if(added[i] == 0){
+                maxi = i;
+                break;
+            }
+        }
+        //cout<<maxi<<endl;
+        added[maxi] = 1;
+        mprofit += v[maxi].first;
+        curw -= v[maxi].second;
+        if(curw>0)
+            continue;
+        else
+        {
+            mprofit -= v[maxi].first;
+            mprofit += (v[maxi].first*1.0/v[maxi].second)*(v[maxi].second+curw);
+        }
     }
+
+    cout<<"Maximum Profit:"<<mprofit<<endl;
     return 0;
 }
 
+/*
+Output:
 
+Test Case #1:
+Enter n:7
+Enter Max weight of sack w:15
+Enter profit and weight:
+10 2
+5 3 
+15 5
+7 7 
+6 1 
+18 4
+3 1
+Maximum Profit:55.3333
+
+Test Case #2:
+Enter n:5
+Enter Max weight of sack w:50
+Enter profit and weight:
+30 5
+20 10
+100 20
+90 30
+160 40
+Maximum Profit:230
+*/
 
 
 
