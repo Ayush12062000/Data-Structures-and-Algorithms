@@ -49,6 +49,7 @@ int main()
         added[maxi] = 1;
         mprofit += v[maxi].first;
         curw -= v[maxi].second;
+
         if(curw>0)
             continue;
         else
