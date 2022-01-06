@@ -17,7 +17,7 @@ public:
         while(sum!=1)
         {
             sum = sol(sum);
-            if (sum < 10 && sum > 1 && sum != 6 && sum != 7) 
+            if (sum < 10 && sum > 1 && sum != 7) 
                 return false;
         }
         if(sum==1)
